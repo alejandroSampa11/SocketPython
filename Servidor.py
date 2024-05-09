@@ -1,7 +1,17 @@
 import socket
 
-HOST = '127.0.0.1'  
-PORT = 12345  # 
+
+def obtener_ip():
+    # Obtener el nombre del host
+    hostname = socket.gethostname()
+    # Obtener la dirección IP asociada al nombre del host
+    ip_address = socket.gethostbyname(hostname)
+    return ip_address
+
+print("La dirección IP del host es:", obtener_ip())
+
+HOST = obtener_ip()
+PORT = 12345  
 
 # socket TCP/IP
 with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as server_socket:
